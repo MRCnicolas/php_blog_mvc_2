@@ -9,6 +9,14 @@ Autoloader::register();
 
 $model = new AnnoncesModel;
 
-$annonces = $model->find(2);
+$donnees = [
+    'titre' => 'Annonce hydratée',
+    'description' => 'Description de l\'annonce hydratée',
+    'actif' => 0
+];
 
-var_dump($annonces);
+$annonce = $model->hydrate($donnees);
+
+$model->create($annonce);
+
+var_dump($annonce);
